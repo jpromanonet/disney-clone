@@ -1,4 +1,4 @@
-import {gql, GraphQLClient } from "graphql-request"
+import {gql, GraphQLClient} from 'graphql-request'
 
 export const getStaticProps = async () => {
     const url = "https://api-eu-central-1.hygraph.com/v2/cktrz7mot2od601yzhg4lgwex/master"
@@ -9,7 +9,28 @@ export const getStaticProps = async () => {
     })
 }
 
-export default function Home() {
+// Let's test the connection
+const query = gql`
+    query {
+      videos {
+        createdAt,
+        id,
+        title,
+        description,
+        seen,
+        slug,
+        tags,
+        thumbnail {
+          url
+        },
+        mp4 {
+          url
+        }
+      }
+    }
+`
+
+const Home = () => {
   return (
     <div>
       Hello!
