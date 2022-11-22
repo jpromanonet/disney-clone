@@ -19,20 +19,22 @@ export const getStaticProps = async () => {
             seen,
             slug,
             tags,
-            thumbnail {
-              url
-            },
-            mp4 {
-              url
-            }
           }
         }
     `
 
-    const data = await graphQLClient.request()
+    const data = await graphQLClient.request(query)
+    const videos = data.videos
+
+    return {
+        props: {
+            videos,
+        }
+    }
 }
 
-const Home = () => {
+const Home = ({ videos }) => {
+    console.log(videos)
   return (
     <div>
       Hello!
