@@ -1,7 +1,8 @@
 import {gql, GraphQLClient} from 'graphql-request'
 
 export const getServerSideProps = async (pageContext) => {
-    console.log(pageContext)
+    const pageSlug = pageContext.query.slug
+
 }
 const Video = () => {
     return (
